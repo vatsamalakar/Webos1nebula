@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NebulaOS X</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/windows.css">
+<link rel="stylesheet" href="css/animations.css">
+
+</head>
+
+
+<body>
+
+
+<!-- Animated Space Background -->
+
+<div class="stars"></div>
+
+<div class="nebula one"></div>
+<div class="nebula two"></div>
+<div class="nebula three"></div>
+
+
+<div class="planet planet-one"></div>
+<div class="planet planet-two"></div>
+<div class="planet planet-three"></div>
+
+
+
+
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <div class="logo">
+        🚀
+        <span>
+            NebulaOS X
+        </span>
+    </div>
+
+
+    <div id="clock">
+        Loading...
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- DESKTOP -->
+
+<div class="desktop">
+
+    <!-- JavaScript generates icons -->
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     NOTES APP
+========================= -->
+
+
+<div class="window" id="notes">
+
+
+    <div class="titlebar">
+
+
+        <div class="window-controls">
+
+
+            <div 
+            class="control close"
+            onclick="closeApp('notes')">
+            </div>
+
+
+            <div class="control minimize">
+            </div>
+
+
+            <div class="control maximize">
+            </div>
+
+
+        </div>
+
+
+        <span>
+            📝 Notes
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="window-content notes">
+
+
+        <textarea 
+        id="notesBox"
+        placeholder="Write your notes here...">
+        </textarea>
+
+
+        <button 
+        class="primary"
+        onclick="saveNotes()">
+
+            Save Notes
+
+        </button>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     TERMINAL APP
+========================= -->
+
+
+<div class="window" id="terminal">
+
+
+    <div class="titlebar">
+
+
+        <div class="window-controls">
+
+
+            <div 
+            class="control close"
+            onclick="closeApp('terminal')">
+            </div>
+
+
+            <div class="control minimize">
+            </div>
+
+
+            <div class="control maximize">
+            </div>
+
+
+        </div>
+
+
+
+        <span>
+            💻 Terminal
+        </span>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="window-content">
+
+
+        <div 
+        class="terminal"
+        id="terminalOutput">
+
+            NebulaOS X Terminal
+            <br>
+            Type "help" to begin.
+
+        </div>
+
+
+
+
+        <input
+        id="terminalInput"
+        placeholder="Enter command...">
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     SYSTEM APP
+========================= -->
+
+
+<div class="window" id="system">
+
+
+    <div class="titlebar">
+
+
+        <div class="window-controls">
+
+
+            <div 
+            class="control close"
+            onclick="closeApp('system')">
+            </div>
+
+
+            <div class="control minimize">
+            </div>
+
+
+            <div class="control maximize">
+            </div>
+
+
+        </div>
+
+
+
+        <span>
+            ⚙️ System
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="window-content">
+
+
+        <div class="card">
+
+
+            <h2>
+                NebulaOS X
+            </h2>
+
+
+            <p>
+                Version: 1.0.0
+            </p>
+
+
+            <p>
+                Status:
+                🟢 Online
+            </p>
+
+
+            <p>
+                Engine:
+                Web Runtime
+            </p>
+
+
+            <p>
+                Architecture:
+                Browser OS
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     DOCK
+========================= -->
+
+
+<div class="dock">
+
+
+<button onclick="openApp('notes')">
+
+📝
+
+</button>
+
+
+
+<button onclick="openApp('terminal')">
+
+💻
+
+</button>
+
+
+
+<button onclick="openApp('system')">
+
+⚙️
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+
+<script src="js/system.js"></script>
+
+<script src="js/windows.js"></script>
+
+<script src="js/apps.js"></script>
+
+<script src="js/notes.js"></script>
+
+<script src="js/terminal.js"></script>
+
+<script src="js/fileexplorer.js"></script>
+
+
+</body>
+
+
+</html>
+
+<!-- FILE EXPLORER -->
+
+<div class="window" id="explorer">
+
+
+<div class="titlebar">
+
+
+<div class="window-controls">
+
+<div 
+class="control close"
+onclick="closeApp('explorer')">
+</div>
+
+</div>
+
+
+<span>
+📁 File Explorer
+</span>
+
+
+</div>
+
+
+
+
+<div class="window-content">
+
+
+<input 
+placeholder="Search files..."
+oninput="searchFiles(this.value)"
+>
+
+
+<div id="fileList"></div>
+
+
+
+<button onclick="createFile()">
+
+New File
+
+</button>
+
+
+
+<button onclick="createFolder()">
+
+New Folder
+
+</button>
+
+
+
+<button onclick="deleteFile()">
+
+Delete
+
+</button>
+
+
+
+</div>
+
+
+</div>

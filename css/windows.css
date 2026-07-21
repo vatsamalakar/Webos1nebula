@@ -1,0 +1,479 @@
+/* ===========================================================
+   NebulaOS X
+   windows.css
+   Professional Window Manager
+=========================================================== */
+
+/* ============================
+   WINDOW
+============================ */
+
+.window{
+
+position:absolute;
+
+display:none;
+flex-direction:column;
+
+width:650px;
+height:420px;
+
+top:120px;
+left:180px;
+
+overflow:hidden;
+
+border-radius:22px;
+
+background:rgba(18,22,40,.78);
+
+backdrop-filter:blur(28px);
+-webkit-backdrop-filter:blur(28px);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.55);
+
+animation:windowOpen .35s ease;
+
+transition:
+box-shadow .25s,
+transform .25s;
+
+z-index:100;
+
+}
+
+/* Active window */
+
+.window.active{
+
+box-shadow:
+
+0 0 0 1px rgba(100,180,255,.35),
+
+0 0 40px rgba(100,180,255,.18),
+
+0 25px 70px rgba(0,0,0,.6);
+
+}
+
+
+
+/* ============================
+   TITLE BAR
+============================ */
+
+.titlebar{
+
+height:52px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+cursor:grab;
+
+user-select:none;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+
+border-bottom:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+.titlebar:active{
+
+cursor:grabbing;
+
+}
+
+.titlebar span{
+
+font-weight:700;
+
+font-size:15px;
+
+letter-spacing:.4px;
+
+color:white;
+
+}
+
+
+
+/* ============================
+   MAC BUTTONS
+============================ */
+
+.window-controls{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.control{
+
+width:14px;
+height:14px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.control:hover{
+
+transform:scale(1.2);
+
+}
+
+.close{
+
+background:#ff5f57;
+
+}
+
+.minimize{
+
+background:#febc2e;
+
+}
+
+.maximize{
+
+background:#28c840;
+
+}
+
+
+
+/* ============================
+   WINDOW BODY
+============================ */
+
+.window-content{
+
+flex:1;
+
+padding:22px;
+
+overflow:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+
+
+/* ============================
+   APP CARDS
+============================ */
+
+.card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:18px;
+
+padding:18px;
+
+transition:.25s;
+
+}
+
+.card:hover{
+
+background:rgba(255,255,255,.08);
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* ============================
+   STATUS BOXES
+============================ */
+
+.status{
+
+padding:14px;
+
+border-radius:14px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(59,130,246,.18),
+rgba(168,85,247,.18)
+);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+
+
+/* ============================
+   TABLE
+============================ */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+text-align:left;
+
+padding:12px;
+
+font-weight:700;
+
+border-bottom:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+td{
+
+padding:12px;
+
+border-bottom:
+
+1px solid rgba(255,255,255,.05);
+
+}
+
+
+
+/* ============================
+   TERMINAL
+============================ */
+
+.terminal{
+
+background:#090909;
+
+color:#59ff8c;
+
+font-family:Consolas,monospace;
+
+padding:18px;
+
+border-radius:16px;
+
+height:100%;
+
+overflow:auto;
+
+}
+
+.terminal input{
+
+margin-top:12px;
+
+background:black;
+
+color:#59ff8c;
+
+font-family:inherit;
+
+}
+
+
+
+/* ============================
+   NOTES
+============================ */
+
+.notes textarea{
+
+height:100%;
+
+background:rgba(255,255,255,.05);
+
+}
+
+
+
+/* ============================
+   FILE GRID
+============================ */
+
+.file-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fill,minmax(110px,1fr));
+
+gap:18px;
+
+}
+
+.file{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+padding:14px;
+
+border-radius:16px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.file:hover{
+
+background:rgba(255,255,255,.08);
+
+transform:translateY(-4px);
+
+}
+
+.file img{
+
+width:54px;
+
+margin-bottom:8px;
+
+}
+
+
+
+/* ============================
+   RESIZE HANDLE
+============================ */
+
+.resize{
+
+position:absolute;
+
+right:0;
+bottom:0;
+
+width:20px;
+height:20px;
+
+cursor:nwse-resize;
+
+}
+
+
+
+/* ============================
+   ANIMATIONS
+============================ */
+
+@keyframes windowOpen{
+
+0%{
+
+opacity:0;
+
+transform:
+
+translateY(30px)
+
+scale(.92);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+
+translateY(0)
+
+scale(1);
+
+}
+
+}
+
+@keyframes windowClose{
+
+0%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:
+
+scale(.88);
+
+}
+
+}
+
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media(max-width:900px){
+
+.window{
+
+width:92vw;
+
+height:78vh;
+
+left:4vw;
+
+top:90px;
+
+}
+
+}
