@@ -82,7 +82,7 @@ function executeCommand(input){
 
         terminalPrint(`
 
-<b>NebulaOS Commands</b>
+<b>Commands</b>
 
 help
 about
@@ -109,18 +109,13 @@ theme
 
         terminalPrint(`
 
-🚀 NebulaOS X
+NebulaOS X
 
-A futuristic browser operating system.
+A browser-based desktop environment.
 
-Built using:
+Built with HTML, CSS, and JavaScript.
 
-HTML
-CSS
-JavaScript
-
-Version:
-1.0.0
+Version: 1.0.0
 
         `);
 
@@ -138,16 +133,15 @@ Version:
 
         terminalPrint(`
 
-Installed Applications:
+Installed applications:
 
-📝 Notes
-
-💻 Terminal
-
-📁 Files
-
-⚙️ System
-
+Notes
+Terminal
+Files
+System
+Calculator
+Tasks
+Settings
 
         `);
 
@@ -197,6 +191,44 @@ Installed Applications:
             }
 
 
+            else if(
+            args[1]=="system"
+            ){
+
+                openApp("system");
+
+            }
+
+
+            else if(
+            args[1]=="calculator"
+            ||
+            args[1]=="calc"
+            ){
+
+                openApp("calculator");
+
+            }
+
+
+            else if(
+            args[1]=="tasks"
+            ){
+
+                openApp("tasks");
+
+            }
+
+
+            else if(
+            args[1]=="settings"
+            ){
+
+                openApp("settings");
+
+            }
+
+
             else{
 
 
@@ -237,14 +269,10 @@ Installed Applications:
 
         terminalPrint(`
 
-📁 Documents
-
-📁 Projects
-
-📄 welcome.txt
-
-📄 about.txt
-
+Documents
+Projects
+welcome.txt
+about.txt
 
         `);
 
@@ -305,29 +333,11 @@ Installed Applications:
 
         terminalPrint(`
 
-
-      🚀 NebulaOS X
-
-
-OS:
 NebulaOS X
-
-
-Version:
-1.0.0
-
-
-Kernel:
-Web Runtime
-
-
-Memory:
-Local Browser Storage
-
-
-Status:
-🟢 Online
-
+Version: 1.0.0
+Kernel: Web Runtime
+Storage: Local Browser Storage
+Status: Online
 
         `);
 
@@ -509,7 +519,7 @@ window.addEventListener(
 
 
 terminalPrint(
-"System initialized 🟢"
+"System initialized"
 );
 
 
