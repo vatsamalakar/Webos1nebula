@@ -18,29 +18,12 @@
 <body>
 
 
-<!-- Animated Space Background -->
-
-<div class="stars"></div>
-
-<div class="nebula one"></div>
-<div class="nebula two"></div>
-<div class="nebula three"></div>
-
-
-<div class="planet planet-one"></div>
-<div class="planet planet-two"></div>
-<div class="planet planet-three"></div>
-
-
-
-
-
 <!-- TOP BAR -->
 
 <div class="topbar">
 
     <div class="logo">
-        🚀
+        
         <span>
             NebulaOS X
         </span>
@@ -50,6 +33,302 @@
     <div id="clock">
         Loading...
     </div>
+
+</div>
+
+
+<!-- =========================
+     FILE EXPLORER APP
+========================= -->
+
+
+<div class="window" id="explorer">
+
+
+    <div class="titlebar">
+
+
+        <div class="window-controls">
+
+
+            <div 
+            class="control close"
+            onclick="closeApp('explorer')">
+            </div>
+
+
+            <div class="control minimize">
+            </div>
+
+
+            <div class="control maximize">
+            </div>
+
+
+        </div>
+
+
+        <span>
+            📁 File Explorer
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="window-content explorer">
+
+
+        <div class="toolbar">
+
+            <input 
+            id="fileSearch"
+            placeholder="Search files..."
+            oninput="searchFiles(this.value)"
+            >
+
+
+            <button class="primary" onclick="createFile()">
+                New File
+            </button>
+
+
+            <button class="primary secondary" onclick="createFolder()">
+                New Folder
+            </button>
+
+
+        </div>
+
+
+        <div id="fileList"></div>
+
+
+        <div class="file-editor" id="fileEditor">
+
+            <div class="editor-header">
+
+                <strong id="editorTitle">
+                    No file selected
+                </strong>
+
+                <button onclick="deleteSelectedFile()">
+                    Delete
+                </button>
+
+            </div>
+
+            <textarea 
+            id="fileContent"
+            placeholder="Select or create a file to edit it."
+            disabled>
+            </textarea>
+
+            <button 
+            class="primary"
+            onclick="saveSelectedFile()">
+                Save File
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     CALCULATOR APP
+========================= -->
+
+
+<div class="window compact-window" id="calculator">
+
+
+    <div class="titlebar">
+
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('calculator')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+
+        <span>
+            🧮 Calculator
+        </span>
+
+
+    </div>
+
+
+    <div class="window-content calculator">
+
+        <input id="calcDisplay" readonly value="0">
+
+        <div class="calc-grid">
+
+            <button onclick="clearCalculator()">C</button>
+            <button onclick="calculatorBackspace()">⌫</button>
+            <button onclick="pressCalculator('%')">%</button>
+            <button onclick="pressCalculator('/')">÷</button>
+
+            <button onclick="pressCalculator('7')">7</button>
+            <button onclick="pressCalculator('8')">8</button>
+            <button onclick="pressCalculator('9')">9</button>
+            <button onclick="pressCalculator('*')">×</button>
+
+            <button onclick="pressCalculator('4')">4</button>
+            <button onclick="pressCalculator('5')">5</button>
+            <button onclick="pressCalculator('6')">6</button>
+            <button onclick="pressCalculator('-')">−</button>
+
+            <button onclick="pressCalculator('1')">1</button>
+            <button onclick="pressCalculator('2')">2</button>
+            <button onclick="pressCalculator('3')">3</button>
+            <button onclick="pressCalculator('+')">+</button>
+
+            <button onclick="pressCalculator('0')" class="wide">0</button>
+            <button onclick="pressCalculator('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     TASK MANAGER APP
+========================= -->
+
+
+<div class="window" id="tasks">
+
+
+    <div class="titlebar">
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('tasks')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+        <span>
+            📊 Task Manager
+        </span>
+
+    </div>
+
+
+    <div class="window-content">
+
+        <div class="metrics-grid">
+
+            <div class="metric-card">
+                <span>Open Windows</span>
+                <strong id="openWindowCount">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span>Files</span>
+                <strong id="fileCount">0</strong>
+            </div>
+
+            <div class="metric-card">
+                <span>Notes Words</span>
+                <strong id="notesWordCount">0</strong>
+            </div>
+
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     SETTINGS APP
+========================= -->
+
+
+<div class="window" id="settings">
+
+
+    <div class="titlebar">
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('settings')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+        <span>
+            ⚙️ Settings
+        </span>
+
+    </div>
+
+
+    <div class="window-content settings">
+
+        <div class="settings-row">
+
+            <div>
+                <strong>Theme</strong>
+                <p>Switch between dark and light appearance.</p>
+            </div>
+
+            <button class="primary" onclick="toggleTheme()">
+                Toggle Theme
+            </button>
+
+        </div>
+
+        <div class="settings-row">
+
+            <div>
+                <strong>Accent Color</strong>
+                <p>Pick the highlight used across windows and controls.</p>
+            </div>
+
+            <div class="swatches">
+                <button style="background:#60A5FA" onclick="setAccent('#60A5FA')"></button>
+                <button style="background:#5EEAD4" onclick="setAccent('#5EEAD4')"></button>
+                <button style="background:#F472B6" onclick="setAccent('#F472B6')"></button>
+                <button style="background:#FBBF24" onclick="setAccent('#FBBF24')"></button>
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>
 
@@ -261,7 +540,7 @@
 
 
         <span>
-            ⚙️ System
+            ℹ️ System
         </span>
 
 
@@ -288,8 +567,7 @@
 
 
             <p>
-                Status:
-                🟢 Online
+                Status: Online
             </p>
 
 
@@ -347,7 +625,37 @@
 
 <button onclick="openApp('system')">
 
-⚙️
+ℹ️
+
+</button>
+
+
+<button onclick="openApp('explorer')">
+
+📁
+
+</button>
+
+
+<button onclick="openApp('calculator')">
+
+🧮
+
+</button>
+
+
+<button onclick="openApp('tasks')">
+
+📊
+
+</button>
+
+
+<button onclick="openApp('settings')" class="dock-settings" aria-label="Settings">
+
+<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+<path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.13.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.69.22l2.39-.96c.5.41 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.58-.22 1.13-.53 1.63-.94l2.39.96c.26.1.55 0 .69-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
+</svg>
 
 </button>
 
@@ -379,78 +687,14 @@
 
 <script src="js/fileexplorer.js"></script>
 
+<script src="js/calculator.js"></script>
+
+<script src="js/tasks.js"></script>
+
+<script src="js/settings.js"></script>
+
 
 </body>
 
 
 </html>
-
-<!-- FILE EXPLORER -->
-
-<div class="window" id="explorer">
-
-
-<div class="titlebar">
-
-
-<div class="window-controls">
-
-<div 
-class="control close"
-onclick="closeApp('explorer')">
-</div>
-
-</div>
-
-
-<span>
-📁 File Explorer
-</span>
-
-
-</div>
-
-
-
-
-<div class="window-content">
-
-
-<input 
-placeholder="Search files..."
-oninput="searchFiles(this.value)"
->
-
-
-<div id="fileList"></div>
-
-
-
-<button onclick="createFile()">
-
-New File
-
-</button>
-
-
-
-<button onclick="createFolder()">
-
-New Folder
-
-</button>
-
-
-
-<button onclick="deleteFile()">
-
-Delete
-
-</button>
-
-
-
-</div>
-
-
-</div>
