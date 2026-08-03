@@ -4,591 +4,95 @@
 =========================================================== */
 
 
-
-/* =========================
-   WINDOW ANIMATIONS
-========================= */
-
-
 @keyframes windowOpen {
 
     from {
-
         opacity: 0;
-
-        transform:
-        scale(0.75)
-        translateY(40px);
-
+        transform: scale(0.96) translateY(12px);
     }
 
-
     to {
-
         opacity: 1;
-
-        transform:
-        scale(1)
-        translateY(0);
-
+        transform: scale(1) translateY(0);
     }
 
 }
-
-
 
 
 
 @keyframes windowClose {
 
-
     from {
-
         opacity:1;
-
-        transform:
-        scale(1);
-
+        transform: scale(1);
     }
-
-
 
     to {
-
         opacity:0;
-
-        transform:
-        scale(.7)
-        translateY(50px);
-
+        transform: scale(.96) translateY(16px);
     }
 
-
 }
-
-
 
 
 
 .window {
 
-    animation:
-    windowOpen
-    .35s
-    ease;
+    animation: windowOpen .28s ease;
 
     transition:
-
-    width .3s ease,
-    height .3s ease,
-    transform .3s ease,
-    opacity .3s ease;
-
-}
-
-
-
-
-
-
-
-
-/* =========================
-   STAR ANIMATIONS
-========================= */
-
-
-@keyframes starPulse {
-
-
-    0% {
-
-        opacity:.25;
-
-        transform:
-        scale(.8);
-
-    }
-
-
-
-    50% {
-
-        opacity:1;
-
-        transform:
-        scale(1.4);
-
-    }
-
-
-
-    100% {
-
-        opacity:.25;
-
-        transform:
-        scale(.8);
-
-    }
-
+    width .25s ease,
+    height .25s ease,
+    transform .25s ease,
+    opacity .25s ease;
 
 }
 
-
-
-
-
-
-.star {
-
-
-    animation-name:
-    starPulse;
-
-
-    animation-iteration-count:
-    infinite;
-
-
-    animation-timing-function:
-    ease-in-out;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   SHOOTING STARS
-========================= */
-
-
-@keyframes meteorMove {
-
-
-    from {
-
-
-        transform:
-
-        translate(0,0)
-        rotate(45deg);
-
-
-        opacity:1;
-
-
-    }
-
-
-
-    to {
-
-
-        transform:
-
-        translate(
-            600px,
-            600px
-        )
-        rotate(45deg);
-
-
-        opacity:0;
-
-
-    }
-
-
-}
-
-
-
-
-
-
-.shooting-star {
-
-
-    position:absolute;
-
-
-    width:160px;
-
-
-    height:3px;
-
-
-    background:
-
-    linear-gradient(
-        90deg,
-        white,
-        transparent
-    );
-
-
-
-    border-radius:50%;
-
-
-
-    animation:
-
-    meteorMove
-    linear
-    forwards;
-
-
-
-    z-index:1;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   PLANET FLOATING
-========================= */
-
-
-@keyframes planetFloat {
-
-
-    0% {
-
-        transform:
-        translateY(0px);
-
-    }
-
-
-    50% {
-
-        transform:
-        translateY(-25px);
-
-    }
-
-
-    100% {
-
-        transform:
-        translateY(0px);
-
-    }
-
-
-}
-
-
-
-
-.planet {
-
-
-    animation:
-
-    planetFloat
-    8s
-    ease-in-out
-    infinite;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   NEBULA MOVEMENT
-========================= */
-
-
-@keyframes nebulaMove {
-
-
-    0% {
-
-        transform:
-        translate(
-            0,
-            0
-        );
-
-    }
-
-
-    50% {
-
-        transform:
-        translate(
-            50px,
-            -40px
-        );
-
-    }
-
-
-    100% {
-
-        transform:
-        translate(
-            0,
-            0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-.nebula {
-
-
-    animation:
-
-    nebulaMove
-    20s
-    infinite
-    ease-in-out;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   DOCK EFFECTS
-========================= */
 
 
 .dock button {
 
-
-    transition:
-
-    transform
-    .2s ease,
-
-    filter
-    .2s ease;
-
+    transition: transform .2s ease, background .2s ease;
 
 }
 
-
-
-.dock button:hover {
-
-
-    transform:
-
-    translateY(-12px)
-    scale(1.25);
-
-
-    filter:
-
-    drop-shadow(
-        0 0 15px white
-    );
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   APP ICON EFFECT
-========================= */
 
 
 .icon {
 
-
-    transition:
-
-    transform
-    .25s ease,
-
-    filter
-    .25s ease;
-
+    transition: transform .2s ease, background .2s ease;
 
 }
 
-
-
-.icon:hover {
-
-
-    transform:
-
-    translateY(-8px)
-    scale(1.12);
-
-
-    filter:
-
-    drop-shadow(
-        0 0 15px cyan
-    );
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   BUTTON EFFECTS
-========================= */
 
 
 .primary {
 
-
-    transition:
-
-    transform
-    .2s ease,
-
-    box-shadow
-    .2s ease;
-
+    transition: transform .2s ease, background .2s ease;
 
 }
 
-
-
-.primary:hover {
-
-
-    transform:
-
-    scale(1.05);
-
-
-
-    box-shadow:
-
-    0 0 20px
-    rgba(
-        0,
-        255,
-        255,
-        .7
-    );
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   ACTIVE WINDOW GLOW
-========================= */
 
 
 .window.active {
 
-
     box-shadow:
-
-    0 0 40px
-    rgba(
-        0,
-        200,
-        255,
-        .35
-    );
-
+    0 0 0 1px rgba(76,139,245,.28),
+    0 18px 40px rgba(0,0,0,.4);
 
 }
 
 
 
-
-
-
-
-
-
-/* =========================
-   LOADING EFFECT
-========================= */
-
-
 @keyframes boot {
 
-
     from {
-
         opacity:0;
-
-        letter-spacing:
-        10px;
-
     }
-
-
 
     to {
-
         opacity:1;
-
-        letter-spacing:
-        normal;
-
     }
-
 
 }
 
@@ -596,12 +100,6 @@
 
 .logo {
 
-
-    animation:
-
-    boot
-    1s
-    ease;
-
+    animation: boot .6s ease;
 
 }
