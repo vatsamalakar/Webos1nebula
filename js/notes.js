@@ -4,7 +4,6 @@
    Notes Application
 =========================================================== */
 
-
 const notesBox =
 document.getElementById("notesBox");
 
