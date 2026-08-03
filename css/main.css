@@ -1,35 +1,31 @@
 /* ===========================================================
    NebulaOS X
    main.css
-   Part 1
-   Global Styles + Galaxy Background + Stars + Planets
 =========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root{
 
---bg1:#030712;
---bg2:#0B1026;
---bg3:#111B4A;
+--bg1:#12151c;
+--bg2:#1a1f2b;
+--bg3:#242b3a;
 
---glass:rgba(255,255,255,.08);
---glass2:rgba(255,255,255,.15);
+--glass:rgba(255,255,255,.07);
+--glass2:rgba(255,255,255,.12);
 
---border:rgba(255,255,255,.18);
+--border:rgba(255,255,255,.12);
 
---blue:#6BCBFF;
---cyan:#5EEAD4;
---purple:#A855F7;
---pink:#EC4899;
+--blue:#4C8BF5;
+--accent:#4C8BF5;
+--cyan:#3D9B8F;
 
---text:#F8FAFC;
---text2:#CBD5E1;
+--text:#F3F4F6;
+--text2:#A8B0BD;
 
---shadow:
-0 10px 30px rgba(0,0,0,.45);
+--shadow:0 12px 28px rgba(0,0,0,.35);
 
---blur:18px;
+--blur:16px;
 
 }
 
@@ -39,7 +35,6 @@
 
 margin:0;
 padding:0;
-
 box-sizing:border-box;
 
 }
@@ -56,7 +51,7 @@ scroll-behavior:smooth;
 
 body{
 
-font-family:"Inter",sans-serif;
+font-family:"IBM Plex Sans",sans-serif;
 
 width:100vw;
 height:100vh;
@@ -66,24 +61,11 @@ overflow:hidden;
 color:var(--text);
 
 background:
-
-radial-gradient(circle at 20% 20%,
-rgba(120,119,255,.18),
-transparent 28%),
-
-radial-gradient(circle at 80% 15%,
-rgba(0,180,255,.18),
-transparent 20%),
-
-radial-gradient(circle at 60% 80%,
-rgba(170,0,255,.15),
-transparent 25%),
-
 linear-gradient(
 160deg,
-var(--bg1),
-var(--bg2),
-var(--bg3)
+var(--bg1) 0%,
+var(--bg2) 55%,
+var(--bg3) 100%
 );
 
 position:relative;
@@ -93,425 +75,27 @@ position:relative;
 
 
 /* ============================
-   STARS
-============================ */
-
-.stars{
-
-position:absolute;
-
-inset:0;
-
-overflow:hidden;
-
-pointer-events:none;
-
-z-index:-20;
-
-}
-
-
-
-.star{
-
-position:absolute;
-
-background:white;
-
-border-radius:50%;
-
-animation:twinkle linear infinite;
-
-}
-
-
-
-/* Tiny stars */
-
-.star.small{
-
-width:2px;
-height:2px;
-
-opacity:.8;
-
-}
-
-
-
-/* Medium */
-
-.star.medium{
-
-width:3px;
-height:3px;
-
-opacity:.9;
-
-}
-
-
-
-/* Large */
-
-.star.large{
-
-width:5px;
-height:5px;
-
-box-shadow:
-
-0 0 10px white,
-
-0 0 20px white;
-
-}
-
-
-
-
-
-/* ============================
-   PLANETS
-============================ */
-
-.planet{
-
-position:absolute;
-
-border-radius:50%;
-
-filter:
-
-drop-shadow(0 0 40px rgba(255,255,255,.25));
-
-animation:
-
-floatPlanet 12s ease-in-out infinite;
-
-}
-
-
-
-/* Giant Planet */
-
-.planet-one{
-
-width:240px;
-height:240px;
-
-right:-60px;
-top:80px;
-
-background:
-
-radial-gradient(
-
-circle at 30% 30%,
-
-#FFD27D,
-
-#D97706,
-
-#78350F
-
-);
-
-}
-
-
-
-/* Blue Planet */
-
-.planet-two{
-
-width:120px;
-height:120px;
-
-left:120px;
-bottom:90px;
-
-background:
-
-radial-gradient(
-
-circle at 30% 30%,
-
-#A5F3FC,
-
-#0EA5E9,
-
-#1D4ED8
-
-);
-
-animation-delay:2s;
-
-}
-
-
-
-/* Purple Moon */
-
-.planet-three{
-
-width:60px;
-height:60px;
-
-right:340px;
-bottom:180px;
-
-background:
-
-radial-gradient(
-
-circle,
-
-#FFFFFF,
-
-#A855F7
-
-);
-
-animation-delay:5s;
-
-}
-
-
-
-/* ============================
-   NEBULA CLOUDS
-============================ */
-
-.nebula{
-
-position:absolute;
-
-width:700px;
-height:700px;
-
-border-radius:50%;
-
-filter:
-
-blur(120px);
-
-opacity:.22;
-
-mix-blend-mode:screen;
-
-animation:
-
-nebulaMove 25s ease-in-out infinite;
-
-}
-
-
-
-.nebula.one{
-
-background:#4F46E5;
-
-left:-250px;
-top:-180px;
-
-}
-
-
-
-.nebula.two{
-
-background:#06B6D4;
-
-right:-220px;
-bottom:-150px;
-
-animation-delay:8s;
-
-}
-
-
-
-.nebula.three{
-
-background:#9333EA;
-
-left:35%;
-top:45%;
-
-animation-delay:14s;
-
-}
-
-
-
-/* ============================
-   KEYFRAMES
-============================ */
-
-@keyframes twinkle{
-
-0%{
-
-opacity:.2;
-transform:scale(.6);
-
-}
-
-50%{
-
-opacity:1;
-transform:scale(1.2);
-
-}
-
-100%{
-
-opacity:.2;
-transform:scale(.6);
-
-}
-
-}
-
-
-
-@keyframes floatPlanet{
-
-0%{
-
-transform:
-translateY(0px);
-
-}
-
-50%{
-
-transform:
-translateY(-18px);
-
-}
-
-100%{
-
-transform:
-translateY(0px);
-
-}
-
-}
-
-
-
-@keyframes nebulaMove{
-
-0%{
-
-transform:
-translate(0,0);
-
-}
-
-50%{
-
-transform:
-translate(80px,-40px);
-
-}
-
-100%{
-
-transform:
-translate(0,0);
-
-}
-
-}
-
-
-
-@keyframes shoot{
-
-0%{
-
-transform:
-
-translate(-300px,-300px)
-
-rotate(45deg);
-
-opacity:0;
-
-}
-
-5%{
-
-opacity:1;
-
-}
-
-15%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-
-translate(1800px,1200px)
-
-rotate(45deg);
-
-opacity:0;
-
-}
-
-}
-/* ===========================================================
-   NebulaOS X
-   main.css
-   Part 2
-   Desktop • Top Bar • Dock • Icons • UI Components
-=========================================================== */
-
-/* ============================
    TOP BAR
 ============================ */
 
 .topbar{
 
 position:fixed;
-
-top:16px;
+top:14px;
 left:50%;
-
 transform:translateX(-50%);
-
-width:calc(100% - 40px);
-
-height:58px;
-
+width:calc(100% - 32px);
+height:52px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-
-padding:0 24px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(22px);
--webkit-backdrop-filter:blur(22px);
-
-border:1px solid rgba(255,255,255,.15);
-
-border-radius:18px;
-
-box-shadow:
-
-0 10px 35px rgba(0,0,0,.45);
-
+padding:0 20px;
+background:rgba(20,24,34,.82);
+backdrop-filter:blur(var(--blur));
+-webkit-backdrop-filter:blur(var(--blur));
+border:1px solid var(--border);
+border-radius:12px;
+box-shadow:var(--shadow);
 z-index:9999;
 
 }
@@ -520,38 +104,24 @@ z-index:9999;
 
 display:flex;
 align-items:center;
-gap:12px;
-
-font-size:20px;
-font-weight:700;
-
-font-family:"Space Grotesk",sans-serif;
-
-letter-spacing:.6px;
+gap:10px;
+font-size:17px;
+font-weight:600;
+letter-spacing:.2px;
 
 }
 
 .topbar .logo span{
 
-background:linear-gradient(
-90deg,
-#7DD3FC,
-#A78BFA,
-#F472B6
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+color:var(--text);
 
 }
 
 #clock{
 
-font-weight:600;
-
-font-size:15px;
-
-color:var(--text);
+font-weight:500;
+font-size:14px;
+color:var(--text2);
 
 }
 
@@ -564,19 +134,14 @@ color:var(--text);
 .desktop{
 
 position:absolute;
-
-top:90px;
-left:24px;
-right:24px;
-bottom:110px;
-
+top:84px;
+left:20px;
+right:20px;
+bottom:100px;
 display:flex;
-
 flex-wrap:wrap;
-
 align-content:flex-start;
-
-gap:22px;
+gap:18px;
 
 }
 
@@ -588,24 +153,15 @@ gap:22px;
 
 .icon{
 
-width:92px;
-
+width:88px;
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
-
-gap:10px;
-
+gap:8px;
 cursor:pointer;
-
-padding:12px;
-
-border-radius:18px;
-
-transition:.25s;
-
+padding:10px;
+border-radius:12px;
+transition:background .2s, transform .2s;
 user-select:none;
 
 }
@@ -614,58 +170,39 @@ user-select:none;
 
 background:rgba(255,255,255,.08);
 
-transform:
-
-translateY(-6px)
-scale(1.04);
-
 }
 
 .icon:active{
 
-transform:scale(.95);
-
-}
-
-.icon img{
-
-width:64px;
-height:64px;
-
-object-fit:cover;
-
-border-radius:18px;
-
-box-shadow:
-
-0 8px 18px rgba(0,0,0,.4);
-
-transition:.3s;
-
-}
-
-.icon:hover img{
-
-transform:
-
-rotate(-3deg)
-scale(1.08);
+transform:scale(.96);
 
 }
 
 .icon span{
 
-font-size:14px;
-
-font-weight:600;
-
+font-size:13px;
+font-weight:500;
 text-align:center;
+color:var(--text);
 
-color:white;
+}
 
-text-shadow:
+.icon-glyph{
 
-0 0 10px black;
+display:flex;
+align-items:center;
+justify-content:center;
+width:48px;
+height:48px;
+font-size:36px;
+line-height:1;
+color:var(--text);
+
+}
+
+.icon-glyph .app-glyph{
+
+display:block;
 
 }
 
@@ -678,101 +215,60 @@ text-shadow:
 .dock{
 
 position:fixed;
-
 left:50%;
-
-bottom:18px;
-
+bottom:16px;
 transform:translateX(-50%);
-
 display:flex;
-
-gap:14px;
-
-padding:14px 22px;
-
-border-radius:24px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(28px);
--webkit-backdrop-filter:blur(28px);
-
-border:1px solid rgba(255,255,255,.15);
-
-box-shadow:
-
-0 10px 35px rgba(0,0,0,.45);
-
+gap:10px;
+padding:10px 14px;
+border-radius:16px;
+background:rgba(20,24,34,.86);
+backdrop-filter:blur(var(--blur));
+-webkit-backdrop-filter:blur(var(--blur));
+border:1px solid var(--border);
+box-shadow:var(--shadow);
 z-index:9999;
 
 }
 
-
-
-/* Dock Icons */
-
 .dock button{
 
-width:58px;
-height:58px;
-
+width:52px;
+height:52px;
 border:none;
-
-border-radius:18px;
-
+border-radius:12px;
 cursor:pointer;
-
-font-size:26px;
-
-background:rgba(255,255,255,.12);
-
-color:white;
-
-transition:.25s;
+font-size:22px;
+background:rgba(255,255,255,.08);
+color:var(--text);
+transition:background .2s, transform .2s;
 
 }
 
 .dock button:hover{
 
-transform:
-
-translateY(-12px)
-scale(1.12);
-
-background:rgba(255,255,255,.18);
-
-box-shadow:
-
-0 0 25px rgba(120,180,255,.4);
+transform:translateY(-6px);
+background:rgba(255,255,255,.14);
 
 }
 
 .dock button:active{
 
-transform:scale(.92);
+transform:scale(.94);
 
 }
 
+.dock-settings{
 
+display:inline-flex;
+align-items:center;
+justify-content:center;
 
-/* ============================
-   GLASS PANEL
-============================ */
+}
 
-.glass{
+.dock-settings svg{
 
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.15);
-
-border-radius:20px;
-
-box-shadow:
-
-0 10px 30px rgba(0,0,0,.4);
+display:block;
 
 }
 
@@ -790,39 +286,33 @@ font-family:inherit;
 
 .primary{
 
-padding:12px 22px;
-
+padding:10px 18px;
 border:none;
-
-border-radius:14px;
-
+border-radius:10px;
 cursor:pointer;
-
-background:
-
-linear-gradient(
-135deg,
-#60A5FA,
-#8B5CF6
-);
-
+background:var(--accent);
 color:white;
-
 font-weight:600;
-
-transition:.25s;
+transition:background .2s, transform .2s;
 
 }
 
 .primary:hover{
 
-transform:
+background:#3B7AE0;
+transform:translateY(-1px);
 
-translateY(-3px);
+}
 
-box-shadow:
+.secondary{
 
-0 0 18px rgba(96,165,250,.45);
+background:#2F6F68;
+
+}
+
+.secondary:hover{
+
+background:#275c56;
 
 }
 
@@ -836,42 +326,28 @@ input,
 textarea{
 
 width:100%;
-
-padding:14px;
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.15);
-
-background:rgba(255,255,255,.06);
-
-color:white;
-
-font-size:15px;
-
+padding:12px;
+border-radius:10px;
+border:1px solid var(--border);
+background:rgba(255,255,255,.05);
+color:var(--text);
+font-size:14px;
+font-family:inherit;
 outline:none;
-
-backdrop-filter:blur(10px);
-
-transition:.2s;
+transition:border-color .2s;
 
 }
 
 input:focus,
 textarea:focus{
 
-border-color:#60A5FA;
-
-box-shadow:
-
-0 0 15px rgba(96,165,250,.35);
+border-color:var(--accent);
 
 }
 
 textarea{
 
 resize:none;
-
 min-height:220px;
 
 }
@@ -884,27 +360,20 @@ min-height:220px;
 
 ::-webkit-scrollbar{
 
-width:10px;
+width:8px;
 
 }
 
 ::-webkit-scrollbar-track{
 
-background:rgba(255,255,255,.04);
+background:rgba(255,255,255,.03);
 
 }
 
 ::-webkit-scrollbar-thumb{
 
-background:
-
-linear-gradient(
-180deg,
-#60A5FA,
-#8B5CF6
-);
-
-border-radius:999px;
+background:rgba(255,255,255,.18);
+border-radius:8px;
 
 }
 
@@ -916,14 +385,339 @@ border-radius:999px;
 
 h1,h2,h3{
 
-font-family:"Space Grotesk",sans-serif;
+font-family:"IBM Plex Sans",sans-serif;
+font-weight:600;
 
 }
 
 p{
 
 color:var(--text2);
+line-height:1.55;
 
-line-height:1.6;
+}
+
+
+
+/* ============================
+   APP SURFACES
+============================ */
+
+.toolbar{
+
+display:flex;
+gap:10px;
+align-items:center;
+
+}
+
+.toolbar input{
+
+flex:1;
+
+}
+
+#fileList{
+
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+gap:12px;
+min-height:112px;
+
+}
+
+.file-card{
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+min-height:92px;
+padding:12px;
+border-radius:10px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+cursor:pointer;
+transition:background .2s;
+
+}
+
+.file-card:hover,
+.file-card.active{
+
+background:rgba(255,255,255,.1);
+
+}
+
+.file-icon{
+
+font-size:28px;
+
+}
+
+.file-card p{
+
+font-size:12px;
+text-align:center;
+word-break:break-word;
+line-height:1.25;
+color:var(--text);
+
+}
+
+.file-editor{
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+}
+
+.editor-header{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+
+}
+
+.editor-header button,
+.task-item button{
+
+border:none;
+border-radius:8px;
+padding:8px 12px;
+background:rgba(255,255,255,.1);
+color:var(--text);
+cursor:pointer;
+
+}
+
+.compact-window{
+
+width:390px;
+height:540px;
+
+}
+
+.calculator{
+
+gap:12px;
+
+}
+
+#calcDisplay{
+
+height:60px;
+font-size:28px;
+font-weight:600;
+text-align:right;
+font-family:"IBM Plex Mono",monospace;
+
+}
+
+.calc-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+
+}
+
+.calc-grid button{
+
+height:54px;
+border:none;
+border-radius:10px;
+background:rgba(255,255,255,.08);
+color:var(--text);
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:background .15s;
+
+}
+
+.calc-grid button:hover{
+
+background:rgba(255,255,255,.14);
+
+}
+
+.calc-grid .wide{
+
+grid-column:span 2;
+
+}
+
+.metrics-grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+
+}
+
+.metric-card{
+
+padding:14px;
+border-radius:10px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.metric-card span{
+
+display:block;
+font-size:12px;
+color:var(--text2);
+
+}
+
+.metric-card strong{
+
+display:block;
+margin-top:6px;
+font-size:24px;
+
+}
+
+.task-list{
+
+display:flex;
+flex-direction:column;
+gap:10px;
+
+}
+
+.task-item{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:12px;
+border-radius:10px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.settings{
+
+gap:12px;
+
+}
+
+.settings-row{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:16px;
+padding:14px;
+border-radius:10px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.settings-row p{
+
+font-size:13px;
+
+}
+
+.swatches{
+
+display:flex;
+gap:8px;
+
+}
+
+.swatches button{
+
+width:28px;
+height:28px;
+border-radius:50%;
+border:2px solid rgba(255,255,255,.55);
+cursor:pointer;
+
+}
+
+.light-mode{
+
+--bg1:#E8EDF5;
+--bg2:#D9E2EF;
+--bg3:#CDD8E8;
+--text:#152033;
+--text2:#4A5568;
+background:linear-gradient(160deg,var(--bg1),var(--bg2),var(--bg3));
+
+}
+
+.light-mode .window,
+.light-mode .topbar,
+.light-mode .dock{
+
+background:rgba(255,255,255,.78);
+color:var(--text);
+
+}
+
+.light-mode .titlebar span,
+.light-mode .dock button,
+.light-mode input,
+.light-mode textarea,
+.light-mode button,
+.light-mode .icon span,
+.light-mode .file-card p,
+.light-mode .editor-header button,
+.light-mode .task-item button,
+.light-mode .calc-grid button{
+
+color:var(--text);
+
+}
+
+.light-mode input,
+.light-mode textarea,
+.light-mode .file-card,
+.light-mode .metric-card,
+.light-mode .task-item,
+.light-mode .settings-row,
+.light-mode .dock button{
+
+background:rgba(255,255,255,.55);
+border-color:rgba(15,23,42,.1);
+
+}
+
+@media(max-width:700px){
+
+.toolbar,
+.settings-row,
+.task-item{
+
+flex-direction:column;
+align-items:stretch;
+
+}
+
+.metrics-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.dock{
+
+max-width:calc(100vw - 24px);
+overflow:auto;
+
+}
 
 }
