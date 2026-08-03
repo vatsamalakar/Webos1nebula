@@ -23,19 +23,20 @@ let fileSystem = JSON.parse(
         name:"welcome.txt",
         type:"file",
         content:
-        "Welcome to NebulaOS X 🚀"
+        "Welcome to NebulaOS X."
     },
 
     {
         name:"about.txt",
         type:"file",
         content:
-        "NebulaOS X is a futuristic web operating system."
+        "NebulaOS X is a browser-based desktop environment."
     }
 
 ];
 
 
+let selectedFileName = null;
 
 
 function saveFileSystem(){
@@ -48,29 +49,47 @@ function saveFileSystem(){
 }
 
 
-
-
-
 const explorer =
 document.getElementById(
     "fileList"
 );
 
 
+function getEditorElements(){
+
+    return {
+        title: document.getElementById("editorTitle"),
+        content: document.getElementById("fileContent")
+    };
+
+}
 
 
+function clearEditor(){
 
-function renderFiles(
-    filter=""
-){
+    selectedFileName = null;
+
+    let { title, content } = getEditorElements();
+
+    if(title){
+        title.textContent = "No file selected";
+    }
+
+    if(content){
+        content.value = "";
+        content.disabled = true;
+    }
+
+}
+
+
+function renderFiles(filter=""){
 
     if(!explorer)
     return;
 
 
-
     explorer.innerHTML="";
-
 
 
     let files =
@@ -85,7 +104,6 @@ function renderFiles(
     );
 
 
-
     files.forEach(file=>{
 
 
@@ -98,6 +116,9 @@ function renderFiles(
         card.className =
         "file-card";
 
+        if(file.name === selectedFileName){
+            card.classList.add("active");
+        }
 
 
         card.innerHTML = `
@@ -122,20 +143,14 @@ function renderFiles(
         `;
 
 
-
         card.onclick =
         ()=>{
 
-
             if(file.type==="file"){
-
                 openFile(file);
-
             }
 
-
         };
-
 
 
         explorer.appendChild(
@@ -149,30 +164,28 @@ function renderFiles(
 }
 
 
-
-
-
-
-
 function openFile(file){
 
 
-    alert(
+    selectedFileName = file.name;
 
-        "Opening file:\n\n"
-        +
-        file.content
+    let { title, content } = getEditorElements();
 
+    if(title){
+        title.textContent = file.name;
+    }
+
+    if(content){
+        content.disabled = false;
+        content.value = file.content || "";
+        content.focus();
+    }
+
+    renderFiles(
+        document.getElementById("fileSearch")?.value || ""
     );
 
-
 }
-
-
-
-
-
-
 
 
 function createFile(){
@@ -184,10 +197,14 @@ function createFile(){
     );
 
 
-
     if(!name)
     return;
 
+
+    if(fileSystem.some(file => file.name === name)){
+        alert("A file with that name already exists.");
+        return;
+    }
 
 
     fileSystem.push({
@@ -197,24 +214,16 @@ function createFile(){
         type:"file",
 
         content:
-        "New NebulaOS document"
+        ""
 
     });
 
 
-
     saveFileSystem();
 
-
-    renderFiles();
-
+    openFile(fileSystem[fileSystem.length - 1]);
 
 }
-
-
-
-
-
 
 
 function createFolder(){
@@ -226,10 +235,14 @@ function createFolder(){
     );
 
 
-
     if(!name)
     return;
 
+
+    if(fileSystem.some(file => file.name === name)){
+        alert("A folder with that name already exists.");
+        return;
+    }
 
 
     fileSystem.push({
@@ -241,54 +254,80 @@ function createFolder(){
     });
 
 
-
     saveFileSystem();
 
 
-    renderFiles();
+    renderFiles(
+        document.getElementById("fileSearch")?.value || ""
+    );
 
 
 }
 
 
+function saveSelectedFile(){
 
 
+    if(!selectedFileName)
+    return;
 
 
+    let { content } = getEditorElements();
 
-function deleteFile(){
+    if(!content)
+    return;
 
 
-    let name =
-    prompt(
-        "Enter file name to delete:"
+    let file = fileSystem.find(
+        item => item.name === selectedFileName && item.type === "file"
     );
 
+
+    if(!file)
+    return;
+
+
+    file.content = content.value;
+    saveFileSystem();
+
+}
+
+
+function deleteSelectedFile(){
+
+
+    if(!selectedFileName){
+        alert("Select a file first.");
+        return;
+    }
+
+
+    if(!confirm(`Delete "${selectedFileName}"?`))
+    return;
 
 
     fileSystem =
     fileSystem.filter(
 
         file =>
-        file.name !== name
+        file.name !== selectedFileName
 
     );
 
 
-
     saveFileSystem();
-
-
-    renderFiles();
+    clearEditor();
+    renderFiles(
+        document.getElementById("fileSearch")?.value || ""
+    );
 
 
 }
 
 
-
-
-
-
+function deleteFile(){
+    deleteSelectedFile();
+}
 
 
 function searchFiles(value){
@@ -302,18 +341,13 @@ function searchFiles(value){
 }
 
 
-
-
-
-
-
-
 window.addEventListener(
 
 "load",
 
 ()=>{
 
+    clearEditor();
     renderFiles();
 
 }
