@@ -335,6 +335,169 @@
 
 
 
+<!-- =========================
+     QUOTE OF THE DAY APP
+========================= -->
+
+
+<div class="window compact-window utility-window" id="quotes">
+
+
+    <div class="titlebar">
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('quotes')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+        <span>
+            ✨ Quote of the Day
+        </span>
+
+    </div>
+
+
+    <div class="window-content quote-app">
+
+        <p class="utility-label" id="quoteLabel">Quote of the Day</p>
+
+        <div class="quote-card">
+            <p id="quoteText">Loading quote…</p>
+            <strong id="quoteAuthor"></strong>
+        </div>
+
+        <div class="utility-actions">
+            <button class="primary" onclick="showDailyQuote()">Today’s Quote</button>
+            <button class="primary secondary" onclick="showAnotherQuote()">Another Quote</button>
+            <button id="copyQuoteBtn" onclick="copyQuote()">Copy</button>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     JOKE GENERATOR APP
+========================= -->
+
+
+<div class="window compact-window utility-window" id="jokes">
+
+
+    <div class="titlebar">
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('jokes')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+        <span>
+            😂 Joke Generator
+        </span>
+
+    </div>
+
+
+    <div class="window-content joke-app">
+
+        <p class="utility-label">Joke Generator</p>
+
+        <div class="joke-card">
+            <p id="jokeSetup">Loading joke…</p>
+            <p id="jokePunchline" class="joke-punchline">???</p>
+        </div>
+
+        <p class="utility-status" id="jokeStatus">Ready when you are.</p>
+
+        <div class="utility-actions">
+            <button class="primary" id="revealJokeBtn" onclick="revealPunchline()">Reveal Punchline</button>
+            <button class="primary secondary" onclick="nextJoke()">Next Joke</button>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     CALENDAR APP
+========================= -->
+
+
+<div class="window" id="calendar">
+
+
+    <div class="titlebar">
+
+        <div class="window-controls">
+
+            <div class="control close" onclick="closeApp('calendar')"></div>
+            <div class="control minimize"></div>
+            <div class="control maximize"></div>
+
+        </div>
+
+        <span>
+            📅 Calendar
+        </span>
+
+    </div>
+
+
+    <div class="window-content calendar-app">
+
+        <div class="calendar-toolbar">
+
+            <button onclick="shiftCalendarMonth(-1)" aria-label="Previous month">‹</button>
+            <strong id="calendarMonthLabel">Month</strong>
+            <button onclick="shiftCalendarMonth(1)" aria-label="Next month">›</button>
+            <button class="primary secondary" onclick="goToToday()">Today</button>
+
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="calendar-note-panel">
+
+            <div class="calendar-note-header">
+                <strong id="calendarSelectedLabel">Select a day</strong>
+                <span class="utility-status" id="calendarNoteStatus"></span>
+            </div>
+
+            <textarea
+            id="calendarNoteInput"
+            placeholder="Add a note for this day…"></textarea>
+
+            <div class="utility-actions">
+                <button class="primary" onclick="saveSelectedDayNote()">Save Note</button>
+                <button class="primary secondary" onclick="clearSelectedDayNote()">Clear</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
 
 
 
@@ -605,59 +768,32 @@
 
 <div class="dock">
 
+    <div class="dock-pinned">
 
-<button onclick="openApp('notes')">
+        <button
+        type="button"
+        id="dockPinnedSystem"
+        onclick="openApp('system')"
+        aria-label="System">
+            ℹ️
+        </button>
 
-📝
+        <button
+        type="button"
+        id="dockPinnedSettings"
+        class="dock-settings"
+        onclick="openApp('settings')"
+        aria-label="Settings">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+            <path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.13.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.69.22l2.39-.96c.5.41 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.58-.22 1.13-.53 1.63-.94l2.39.96c.26.1.55 0 .69-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
+            </svg>
+        </button>
 
-</button>
+    </div>
 
+    <div class="dock-divider" id="dockDivider" hidden aria-hidden="true">|</div>
 
-
-<button onclick="openApp('terminal')">
-
-💻
-
-</button>
-
-
-
-<button onclick="openApp('system')">
-
-ℹ️
-
-</button>
-
-
-<button onclick="openApp('explorer')">
-
-📁
-
-</button>
-
-
-<button onclick="openApp('calculator')">
-
-🧮
-
-</button>
-
-
-<button onclick="openApp('tasks')">
-
-📊
-
-</button>
-
-
-<button onclick="openApp('settings')" class="dock-settings" aria-label="Settings">
-
-<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
-<path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.13.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.69.22l2.39-.96c.5.41 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.58-.22 1.13-.53 1.63-.94l2.39.96c.26.1.55 0 .69-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
-</svg>
-
-</button>
-
+    <div class="dock-running" id="dockRunning" aria-label="Open applications"></div>
 
 </div>
 
@@ -691,6 +827,12 @@
 <script src="js/tasks.js"></script>
 
 <script src="js/settings.js"></script>
+
+<script src="js/quotes.js"></script>
+
+<script src="js/jokes.js"></script>
+
+<script src="js/calendar.js"></script>
 
 
 </body>
