@@ -99,6 +99,42 @@ const apps = {
         description:
         "Preferences"
 
+    },
+
+
+    quotes:{
+
+        name:"Quotes",
+
+        icon:"✨",
+
+        description:
+        "Quote of the Day"
+
+    },
+
+
+    jokes:{
+
+        name:"Jokes",
+
+        icon:"😂",
+
+        description:
+        "Joke Generator"
+
+    },
+
+
+    calendar:{
+
+        name:"Calendar",
+
+        icon:"📅",
+
+        description:
+        "Month calendar"
+
     }
 
 
@@ -109,6 +145,84 @@ const apps = {
 
 
 
+
+
+const pinnedDockApps = ["system", "settings"];
+
+
+function isAppRunning(app){
+
+    if(!app)
+    return false;
+
+    if(app.classList.contains("minimized"))
+    return true;
+
+    return window.getComputedStyle(app).display !== "none";
+
+}
+
+
+function refreshDock(){
+
+    let divider = document.getElementById("dockDivider");
+    let running = document.getElementById("dockRunning");
+    let pinnedSystem = document.getElementById("dockPinnedSystem");
+    let pinnedSettings = document.getElementById("dockPinnedSettings");
+
+    if(!running)
+    return;
+
+
+    let openApps = Object.keys(apps).filter(id =>
+        !pinnedDockApps.includes(id) &&
+        isAppRunning(document.getElementById(id))
+    );
+
+
+    running.innerHTML = "";
+
+
+    openApps.forEach(id => {
+
+        let data = apps[id];
+        let button = document.createElement("button");
+        button.type = "button";
+        button.className = "open";
+        button.setAttribute("aria-label", data.name);
+        button.title = data.name;
+        button.innerHTML = data.iconHtml || data.icon;
+        button.onclick = () => openApp(id);
+        running.appendChild(button);
+
+    });
+
+
+    if(divider){
+
+        let showDivider = openApps.length > 0;
+        divider.hidden = !showDivider;
+        divider.setAttribute("aria-hidden", showDivider ? "false" : "true");
+
+    }
+
+
+    if(pinnedSystem){
+        pinnedSystem.classList.toggle(
+            "open",
+            isAppRunning(document.getElementById("system"))
+        );
+    }
+
+
+    if(pinnedSettings){
+        pinnedSettings.classList.toggle(
+            "open",
+            isAppRunning(document.getElementById("settings"))
+        );
+    }
+
+}
 
 
 /* ============================
@@ -167,6 +281,7 @@ function openApp(appID){
 
     focusWindow(app);
 
+    refreshDock();
 
 
 }
@@ -214,6 +329,8 @@ function closeApp(appID){
             "maximized"
         );
 
+        refreshDock();
+
 
     },250);
 
@@ -239,6 +356,8 @@ function minimizeApp(app){
 
         app.style.display =
         "none";
+
+        refreshDock();
 
 
     },180);
@@ -504,6 +623,8 @@ window.addEventListener(
 createDesktopIcons();
 
 wireWindowControls();
+
+refreshDock();
 
 
 });

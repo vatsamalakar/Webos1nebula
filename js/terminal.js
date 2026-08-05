@@ -142,6 +142,9 @@ System
 Calculator
 Tasks
 Settings
+Quotes
+Jokes
+Calendar
 
         `);
 
@@ -225,6 +228,39 @@ Settings
             ){
 
                 openApp("settings");
+
+            }
+
+
+            else if(
+            args[1]=="quotes"
+            ||
+            args[1]=="quote"
+            ){
+
+                openApp("quotes");
+
+            }
+
+
+            else if(
+            args[1]=="jokes"
+            ||
+            args[1]=="joke"
+            ){
+
+                openApp("jokes");
+
+            }
+
+
+            else if(
+            args[1]=="calendar"
+            ||
+            args[1]=="cal"
+            ){
+
+                openApp("calendar");
 
             }
 

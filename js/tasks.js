@@ -11,7 +11,10 @@ const trackedApps = [
     { id: "explorer", name: "File Explorer" },
     { id: "calculator", name: "Calculator" },
     { id: "tasks", name: "Task Manager" },
-    { id: "settings", name: "Settings" }
+    { id: "settings", name: "Settings" },
+    { id: "quotes", name: "Quote of the Day" },
+    { id: "jokes", name: "Joke Generator" },
+    { id: "calendar", name: "Calendar" }
 ];
 
 
