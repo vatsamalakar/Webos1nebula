@@ -10,3 +10,6 @@ NebulaOS X is a desktop-style web app built with HTML, CSS, and JavaScript.
 - Calculator
 - Task manager
 - Settings (theme, accent)
+- Quote of the Day
+- Joke Generator
+- Calendar with day notes
