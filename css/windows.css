@@ -1,59 +1,28 @@
 /* ===========================================================
-   NebulaOS X
-   windows.css
-   Professional Window Manager
+   NebulaOS X — minimal windows
 =========================================================== */
-
-/* ============================
-   WINDOW
-============================ */
 
 .window{
 
 position:absolute;
-
 display:none;
 flex-direction:column;
-
-width:650px;
-height:420px;
-
-top:120px;
-left:180px;
-
+width:720px;
+height:520px;
+top:56px;
+left:160px;
 overflow:hidden;
-
-border-radius:14px;
-
-background:rgba(22,26,36,.92);
-
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.1);
-
-box-shadow:
-0 16px 36px rgba(0,0,0,.4);
-
-animation:windowOpen .35s ease;
-
-transition:
-box-shadow .25s,
-transform .25s;
-
+border-radius:0;
+background:var(--surface);
+border:1px solid var(--line);
+box-shadow:none;
 z-index:100;
 
 }
 
-/* Active window */
-
 .window.active{
 
-box-shadow:
-
-0 0 0 1px rgba(76,139,245,.28),
-
-0 18px 42px rgba(0,0,0,.45);
+border-color:var(--text);
 
 }
 
@@ -61,53 +30,31 @@ box-shadow:
 
 opacity:0;
 pointer-events:none;
-transform:scale(.92) translateY(24px);
 
 }
 
 .window.maximized{
 
-width:calc(100vw - 24px) !important;
-height:calc(100vh - 110px) !important;
-top:76px !important;
-left:12px !important;
-border-radius:14px;
+width:calc(100vw - 16px) !important;
+height:calc(100vh - 90px) !important;
+top:44px !important;
+left:8px !important;
+border-radius:0;
 
 }
 
-
-
-/* ============================
-   TITLE BAR
-============================ */
-
 .titlebar{
 
-height:52px;
-
+height:34px;
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
-padding:0 18px;
-
+flex-direction:row-reverse;
+padding:0 8px 0 10px;
 cursor:grab;
-
 user-select:none;
-
-background:
-
-linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.02)
-);
-
-border-bottom:
-
-1px solid rgba(255,255,255,.08);
+background:var(--surface);
+border-bottom:1px solid var(--line);
 
 }
 
@@ -119,368 +66,217 @@ cursor:grabbing;
 
 .titlebar span{
 
-font-weight:700;
-
-font-size:15px;
-
-letter-spacing:.4px;
-
-color:white;
+font-weight:500;
+font-size:13px;
+color:var(--text);
+letter-spacing:0;
 
 }
-
-
-
-/* ============================
-   MAC BUTTONS
-============================ */
 
 .window-controls{
 
 display:flex;
-
-gap:10px;
+gap:2px;
+order:-1;
 
 }
 
 .control{
 
-width:14px;
-height:14px;
-
-border-radius:50%;
-
+width:auto;
+height:22px;
+min-width:22px;
+border-radius:0;
 cursor:pointer;
-
-transition:.2s;
+background:transparent;
+color:var(--muted);
+display:inline-flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+line-height:1;
+border:none;
 
 }
 
 .control:hover{
 
-transform:scale(1.2);
+color:var(--text);
+background:var(--line);
+transform:none;
 
 }
 
-.close{
+.close::before{ content:"×"; }
+.minimize::before{ content:"–"; }
+.maximize::before{ content:"+"; }
 
-background:#ff5f57;
-
-}
-
-.minimize{
-
-background:#febc2e;
-
-}
-
+.close,
+.minimize,
 .maximize{
 
-background:#28c840;
+background:transparent;
 
 }
-
-
-
-/* ============================
-   WINDOW BODY
-============================ */
 
 .window-content{
 
 flex:1;
-
-padding:22px;
-
+padding:14px;
 overflow:auto;
-
 display:flex;
-
 flex-direction:column;
-
-gap:18px;
+gap:10px;
+min-height:0;
 
 }
 
-
-
-/* ============================
-   APP CARDS
-============================ */
-
 .card{
 
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:18px;
-
-padding:18px;
-
-transition:.25s;
+padding:0;
+background:transparent;
+border:none;
+border-radius:0;
 
 }
 
 .card:hover{
 
-background:rgba(255,255,255,.08);
+background:transparent;
 
 }
 
+.card h2{
 
+font-size:16px;
+margin-bottom:8px;
 
-/* ============================
-   STATUS BOXES
-============================ */
+}
+
+.card p{
+
+margin-bottom:2px;
+font-size:13px;
+
+}
 
 .status{
 
-padding:14px;
-
-border-radius:10px;
-
-background:rgba(76,139,245,.12);
-
-border:
-
-1px solid rgba(255,255,255,.08);
+padding:8px 10px;
+border-radius:0;
+border:1px solid var(--line);
+background:transparent;
 
 }
-
-
-
-/* ============================
-   TABLE
-============================ */
 
 table{
 
 width:100%;
-
 border-collapse:collapse;
+
+}
+
+th,td{
+
+text-align:left;
+padding:8px 4px;
+font-size:13px;
+border-bottom:1px solid var(--line);
 
 }
 
 th{
 
-text-align:left;
-
-padding:12px;
-
-font-weight:700;
-
-border-bottom:
-
-1px solid rgba(255,255,255,.08);
+font-weight:500;
 
 }
-
-td{
-
-padding:12px;
-
-border-bottom:
-
-1px solid rgba(255,255,255,.05);
-
-}
-
-
-
-/* ============================
-   TERMINAL
-============================ */
 
 .terminal{
 
-background:#090909;
-
-color:#59ff8c;
-
-font-family:Consolas,monospace;
-
-padding:18px;
-
-border-radius:16px;
-
+background:var(--bg);
+color:var(--text);
+font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+padding:10px;
+border-radius:0;
+border:1px solid var(--line);
 height:100%;
-
 overflow:auto;
+font-size:12px;
 
 }
 
 .terminal input{
 
-margin-top:12px;
-
-background:black;
-
-color:#59ff8c;
-
+margin-top:8px;
+background:var(--bg);
+color:var(--text);
 font-family:inherit;
+border-radius:0;
 
 }
-
-
-
-/* ============================
-   NOTES
-============================ */
 
 .notes textarea{
 
 height:100%;
-
-background:rgba(255,255,255,.05);
+background:var(--bg);
 
 }
 
-
-
-/* ============================
-   FILE GRID
-============================ */
-
 .file-grid{
 
-display:grid;
-
-grid-template-columns:
-
-repeat(auto-fill,minmax(110px,1fr));
-
-gap:18px;
+display:flex;
+flex-direction:column;
+gap:2px;
 
 }
 
 .file{
 
 display:flex;
-
-flex-direction:column;
-
+flex-direction:row;
 align-items:center;
-
-padding:14px;
-
-border-radius:16px;
-
+padding:6px 8px;
+border-radius:0;
 cursor:pointer;
-
-transition:.25s;
 
 }
 
 .file:hover{
 
-background:rgba(255,255,255,.08);
-
-transform:translateY(-4px);
+background:var(--line);
+transform:none;
 
 }
 
 .file img{
 
-width:54px;
-
-margin-bottom:8px;
-
-}
-
-
-
-/* ============================
-   RESIZE HANDLE
-============================ */
-
-.resize{
-
-position:absolute;
-
-right:0;
-bottom:0;
-
-width:20px;
-height:20px;
-
-cursor:nwse-resize;
+width:16px;
+margin:0 8px 0 0;
 
 }
-
-
-
-/* ============================
-   ANIMATIONS
-============================ */
 
 @keyframes windowOpen{
 
-0%{
-
-opacity:0;
-
-transform:
-
-translateY(30px)
-
-scale(.92);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:
-
-translateY(0)
-
-scale(1);
-
-}
+from{ opacity:0; }
+to{ opacity:1; }
 
 }
 
 @keyframes windowClose{
 
-0%{
-
-opacity:1;
-
-transform:scale(1);
+from{ opacity:1; }
+to{ opacity:0; }
 
 }
-
-100%{
-
-opacity:0;
-
-transform:
-
-scale(.88);
-
-}
-
-}
-
-
-
-/* ============================
-   RESPONSIVE
-============================ */
 
 @media(max-width:900px){
 
 .window{
 
 width:92vw;
-
-height:78vh;
-
+height:75vh;
 left:4vw;
-
-top:90px;
+top:56px;
 
 }
 
