@@ -1,7 +1,0 @@
-/* minimal — no decorative motion */
-
-.window{
-
-animation:windowOpen .1s linear;
-
-}
