@@ -1,1027 +1,134 @@
-:root{
-
---bg:#f7f7f5;
---surface:#ffffff;
---line:#d8d8d4;
---text:#1a1a1a;
---muted:#6a6a6a;
---accent:#1a1a1a;
-
-}
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
-}
-
-html,body{
-
-width:100%;
-height:100%;
-
-}
-
-body{
-
-font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;
-overflow:hidden;
-color:var(--text);
-background:var(--bg);
-font-size:14px;
-
-}
-
-body.light-mode{
-
-/* default is already light */
-
-}
-
-body:not(.light-mode){
-
---bg:#111111;
---surface:#181818;
---line:#2a2a2a;
---text:#f0f0f0;
---muted:#8a8a8a;
---accent:#f0f0f0;
-
-}
-
-
-
-/* Top bar */
-
-.topbar{
-
-position:fixed;
-inset:0 0 auto 0;
-height:36px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 12px;
-background:var(--surface);
-border-bottom:1px solid var(--line);
-z-index:9999;
-
-}
-
-.topbar .logo{
-
-font-size:13px;
-font-weight:600;
-
-}
-
-#clock{
-
-font-size:12px;
-color:var(--muted);
-font-variant-numeric:tabular-nums;
-
-}
-
-
-
-/* Desktop app list */
-
-.desktop{
-
-position:absolute;
-top:48px;
-left:12px;
-bottom:56px;
-width:140px;
-display:flex;
-flex-direction:column;
-align-content:flex-start;
-gap:2px;
-
-}
-
-.icon{
-
-width:100%;
-display:block;
-cursor:pointer;
-padding:6px 8px;
-border:none;
-border-radius:0;
-background:transparent;
-text-align:left;
-user-select:none;
-color:var(--text);
-font:inherit;
-
-}
-
-.icon:hover{
-
-background:var(--line);
-
-}
-
-.icon-glyph{
-
-display:none;
-
-}
-
-.icon span{
-
-font-size:13px;
-font-weight:400;
-
-}
-
-
-
-/* Dock */
-
-.dock{
-
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-transform:none;
-display:flex;
-align-items:center;
-gap:8px;
-padding:8px 12px;
-border-radius:0;
-background:var(--surface);
-border:none;
-border-top:1px solid var(--line);
-box-shadow:none;
-z-index:9999;
-
-}
-
-.dock-pinned,
-.dock-running{
-
-display:flex;
-align-items:center;
-gap:4px;
-flex-wrap:wrap;
-
-}
-
-.dock-divider{
-
-display:inline;
-height:auto;
-padding:0 4px;
-color:var(--muted);
-font-size:13px;
-font-weight:400;
-line-height:1;
-user-select:none;
-pointer-events:none;
-
-}
-
-.dock-divider[hidden]{
-
-display:none;
-
-}
-
-.dock button{
-
-width:auto;
-height:auto;
-min-height:28px;
-padding:4px 10px;
-border:1px solid var(--line);
-border-radius:0;
-cursor:pointer;
-font-size:13px;
-background:var(--bg);
-color:var(--text);
-position:relative;
-
-}
-
-.dock button:hover{
-
-background:var(--line);
-
-}
-
-.dock button.open{
-
-border-color:var(--text);
-
-}
-
-.dock button.open::after{
-
-display:none;
-
-}
-
-.dock-settings{
-
-display:inline-flex;
-align-items:center;
-justify-content:center;
-
-}
-
-.dock-settings svg{
-
-display:none;
-
-}
-
-
-
-/* Buttons */
-
-button{
-
-font-family:inherit;
-
-}
-
-.primary{
-
-padding:6px 12px;
-border:1px solid #111111;
-border-radius:0;
-cursor:pointer;
-background:#111111;
-color:#ffffff;
-font-weight:500;
-font-size:13px;
-
-}
-
-.primary:hover{
-
-opacity:.85;
-color:#ffffff;
-
-}
-
-.primary:disabled{
-
-opacity:.45;
-cursor:default;
-color:#ffffff;
-
-}
-
-.secondary{
-
-background:var(--bg);
-color:var(--text);
-border:1px solid var(--line);
-
-}
-
-.secondary:hover{
-
-opacity:1;
-background:var(--line);
-color:var(--text);
-
-}
-
-.primary.secondary{
-
-background:var(--bg);
-color:var(--text);
-border:1px solid var(--line);
-
-}
-
-.primary.secondary:hover{
-
-color:var(--text);
-
-}
-
-
-
-/* Inputs */
-
-input,
-textarea{
-
-width:100%;
-padding:8px 10px;
-border-radius:0;
-border:1px solid var(--line);
-background:var(--bg);
-color:var(--text);
-font-size:14px;
-font-family:inherit;
-outline:none;
-
-}
-
-input:focus,
-textarea:focus{
-
-border-color:var(--text);
-
-}
-
-textarea{
-
-resize:none;
-min-height:200px;
-
-}
-
-::-webkit-scrollbar{
-
-width:8px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:var(--line);
-
-}
-
-h1,h2,h3{
-
-font-weight:600;
-
-}
-
-p{
-
-color:var(--muted);
-line-height:1.45;
-
-}
-
-
-
-/* App surfaces */
-
-.toolbar{
-
-display:flex;
-flex-direction:column;
-gap:8px;
-align-items:stretch;
-
-}
-
-.toolbar input{
-
-flex:none;
-width:100%;
-
-}
-
-.toolbar-actions{
-
-display:flex;
-gap:6px;
-flex-wrap:wrap;
-
-}
-
-.toolbar-actions .primary{
-
-flex:1;
-white-space:nowrap;
-
-}
-
-#fileList,
-.file-list{
-
-display:flex;
-flex-direction:column;
-gap:2px;
-min-height:0;
-flex:1;
-overflow:auto;
-
-}
-
-.file-card{
-
-display:flex;
-flex-direction:row;
-align-items:center;
-justify-content:flex-start;
-gap:8px;
-min-height:auto;
-padding:8px 10px;
-border:none;
-border-radius:0;
-cursor:pointer;
-background:transparent;
-
-}
-
-.file-card:hover,
-.file-card.active{
-
-background:var(--line);
-border-color:transparent;
-
-}
-
-.file-icon{
-
-font-size:12px;
-color:var(--muted);
-min-width:36px;
-text-transform:uppercase;
-letter-spacing:.02em;
-
-}
-
-.file-card p{
-
-font-size:13px;
-text-align:left;
-color:var(--text);
-margin:0;
-
-}
-
-.file-empty{
-
-padding:10px;
-font-size:12px;
-color:var(--muted);
-
-}
-
-#explorer{
-
-width:860px;
-height:580px;
-left:150px;
-top:52px;
-
-}
-
-.window-content.explorer{
-
-flex-direction:row;
-gap:0;
-padding:0;
-overflow:hidden;
-
-}
-
-.explorer-sidebar{
-
-width:240px;
-min-width:200px;
-display:flex;
-flex-direction:column;
-gap:10px;
-padding:12px;
-border-right:1px solid var(--line);
-min-height:0;
-background:var(--bg);
-
-}
-
-.file-editor{
-
-flex:1;
-display:flex;
-flex-direction:column;
-gap:10px;
-padding:12px;
-min-width:0;
-min-height:0;
-
-}
-
-.file-editor textarea{
-
-flex:1;
-min-height:0;
-height:auto;
-resize:none;
-font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-font-size:13px;
-line-height:1.45;
-
-}
-
-.editor-header{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-
-}
-
-.editor-header strong{
-
-font-size:13px;
-font-weight:500;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap;
-
-}
-
-.editor-actions{
-
-display:flex;
-justify-content:flex-end;
-
-}
-
-.editor-header button,
-.task-item button,
-.utility-actions button,
-.calendar-toolbar button{
-
-border:1px solid var(--line);
-border-radius:0;
-padding:5px 10px;
-background:var(--bg);
-color:var(--text);
-cursor:pointer;
-font-size:13px;
-
-}
-
-.compact-window{
-
-width:420px;
-height:560px;
-
-}
-
-.calculator{
-
-gap:8px;
-
-}
-
-#calcDisplay{
-
-height:44px;
-font-size:24px;
-font-weight:500;
-text-align:right;
-font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-border:1px solid var(--line);
-background:var(--bg);
-border-radius:0;
-
-}
-
-.calc-grid{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:4px;
-
-}
-
-.calc-grid button{
-
-height:44px;
-border:1px solid var(--line);
-border-radius:0;
-background:var(--bg);
-color:var(--text);
-font-size:15px;
-font-weight:500;
-cursor:pointer;
-
-}
-
-.calc-grid button:hover{
-
-background:var(--line);
-
-}
-
-.calc-grid .wide{
-
-grid-column:span 2;
-
-}
-
-.metrics-grid{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px;
-
-}
-
-.metric-card{
-
-padding:10px;
-border-radius:0;
-border:1px solid var(--line);
-background:transparent;
-
-}
-
-.metric-card span{
-
-display:block;
-font-size:12px;
-color:var(--muted);
-
-}
-
-.metric-card strong{
-
-display:block;
-margin-top:4px;
-font-size:20px;
-font-weight:600;
-
-}
-
-.task-list{
-
-display:flex;
-flex-direction:column;
-gap:4px;
-
-}
-
-.task-item{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-padding:8px 0;
-border-radius:0;
-border:none;
-border-bottom:1px solid var(--line);
-background:transparent;
-
-}
-
-.settings{
-
-gap:0;
-
-}
-
-.settings-row{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:16px;
-padding:12px 0;
-border-radius:0;
-border:none;
-border-bottom:1px solid var(--line);
-background:transparent;
-
-}
-
-.settings-row:last-child{
-
-border-bottom:none;
-
-}
-
-.settings-row p{
-
-font-size:12px;
-
-}
-
-.swatches{
-
-display:flex;
-gap:6px;
-
-}
-
-.swatches button{
-
-width:18px;
-height:18px;
-border-radius:0;
-border:1px solid var(--line);
-cursor:pointer;
-
-}
-
-.utility-window{
-
-width:480px;
-height:480px;
-left:200px;
-top:64px;
-
-}
-
-#jokes{
-
-left:280px;
-top:84px;
-
-}
-
-.quote-app,
-.joke-app{
-
-justify-content:space-between;
-
-}
-
-.utility-label{
-
-font-size:12px;
-font-weight:400;
-color:var(--muted);
-text-transform:none;
-letter-spacing:0;
-
-}
-
-.quote-card,
-.joke-card{
-
-flex:1;
-display:flex;
-flex-direction:column;
-justify-content:center;
-gap:12px;
-padding:0;
-border:none;
-background:transparent;
-border-radius:0;
-
-}
-
-.quote-card p,
-.joke-card #jokeSetup{
-
-font-size:18px;
-line-height:1.4;
-font-weight:400;
-
-}
-
-.quote-card strong{
-
-color:var(--muted);
-font-size:13px;
-font-weight:400;
-
-}
-
-.joke-punchline{
-
-font-size:15px;
-line-height:1.4;
-color:var(--muted);
-font-style:normal;
-min-height:1.4em;
-
-}
-
-.joke-punchline.revealed{
-
-color:var(--text);
-font-weight:400;
-
-}
-
-.utility-status{
-
-font-size:12px;
-color:var(--muted);
-
-}
-
-.utility-actions{
-
-display:flex;
-flex-wrap:wrap;
-gap:6px;
-
-}
-
-.utility-actions button:disabled{
-
-opacity:.45;
-cursor:default;
-
-}
-
-#calendar{
-
-left:170px;
-top:56px;
-width:720px;
-height:580px;
-
-}
-
-.calendar-app{
-
-gap:10px;
-
-}
-
-.calendar-toolbar{
-
-display:flex;
-align-items:center;
-gap:6px;
-
-}
-
-.calendar-toolbar strong{
-
-flex:1;
-text-align:center;
-font-size:14px;
-font-weight:600;
-
-}
-
-.calendar-toolbar button{
-
-min-width:32px;
-height:28px;
-padding:0 8px;
-font-size:14px;
-font-weight:400;
-
-}
-
-.calendar-grid{
-
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:2px;
-
-}
-
-.calendar-weekday{
-
-text-align:left;
-font-size:11px;
-font-weight:400;
-color:var(--muted);
-padding:4px;
-
-}
-
-.calendar-day{
-
-min-height:34px;
-border:none;
-border-radius:0;
-background:transparent;
-color:var(--text);
-cursor:pointer;
-font-weight:400;
-position:relative;
-text-align:left;
-padding:4px 6px;
-
-}
-
-.calendar-day.empty{
-
-visibility:hidden;
-pointer-events:none;
-
-}
-
-.calendar-day:hover{
-
-background:var(--line);
-
-}
-
-.calendar-day.today{
-
-outline:1px solid var(--text);
-
-}
-
-.calendar-day.selected{
-
-background:var(--line);
-
-}
-
-.calendar-day.has-note::after{
-
-content:"";
-position:absolute;
-bottom:4px;
-left:6px;
-width:3px;
-height:3px;
-border-radius:0;
-background:var(--text);
-
-}
-
-.calendar-note-panel{
-
-display:flex;
-flex-direction:column;
-gap:8px;
-padding-top:8px;
-border-top:1px solid var(--line);
-background:transparent;
-border-radius:0;
-
-}
-
-.calendar-note-header{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-flex-wrap:wrap;
-
-}
-
-#calendarNoteInput{
-
-min-height:56px;
-resize:vertical;
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#111;--surface:#181818;--line:#2a2a2a;--text:#f0f0f0;--muted:#8a8a8a}
+body.light-mode{--bg:#f7f7f5;--surface:#fff;--line:#d8d8d4;--text:#1a1a1a;--muted:#6a6a6a}
+html,body{width:100%;height:100%}
+body{font:14px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--text);background:var(--bg);overflow:hidden}
+button,input,textarea{font:inherit}
+p{color:var(--muted)}
+h1,h2,h3{font-weight:600}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-thumb{background:var(--line)}
+
+.topbar,.dock{position:fixed;left:0;right:0;z-index:9999;display:flex;align-items:center;background:var(--surface)}
+.topbar{top:0;height:36px;justify-content:space-between;padding:0 12px;border-bottom:1px solid var(--line)}
+.topbar .logo{font-size:13px;font-weight:600}
+#clock{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.desktop{position:absolute;top:48px;left:12px;bottom:56px;width:140px;display:flex;flex-direction:column;gap:2px}
+.icon{display:block;width:100%;padding:6px 8px;border:0;background:0;color:var(--text);text-align:left;cursor:pointer}
+.icon:hover,.file-card:hover,.file-card.active,.calendar-day:hover,.calendar-day.selected,.dock button:hover,.calc-grid button:hover,.secondary:hover{background:var(--line)}
+.icon span{font-size:13px}
+
+.dock{bottom:0;gap:8px;padding:8px 12px;border-top:1px solid var(--line)}
+.dock-pinned,.dock-running{display:flex;flex-wrap:wrap;gap:4px}
+.dock-divider{padding:0 4px;color:var(--muted);pointer-events:none}
+.dock-divider[hidden]{display:none}
+.dock button{min-height:28px;padding:4px 10px;border:1px solid var(--line);background:var(--bg);color:var(--text);cursor:pointer}
+.dock button.open{border-color:var(--text)}
+
+.primary{padding:6px 12px;border:1px solid #111;background:#111;color:#fff;font-weight:500;cursor:pointer}
+.primary:hover{opacity:.85;color:#fff}
+.primary:disabled,.utility-actions button:disabled{opacity:.45;cursor:default}
+.secondary,.primary.secondary{background:var(--bg);color:var(--text);border:1px solid var(--line)}
+.secondary:hover,.primary.secondary:hover{color:var(--text);opacity:1}
+
+input,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);background:var(--bg);color:var(--text);outline:0}
+input:focus,textarea:focus{border-color:var(--text)}
+textarea{resize:none;min-height:200px}
+
+.window{position:absolute;display:none;flex-direction:column;width:720px;height:520px;top:56px;left:160px;overflow:hidden;background:var(--surface);border:1px solid var(--line);z-index:100;animation:windowOpen .1s linear}
+.window.active{border-color:var(--text)}
+.window.minimized{opacity:0;pointer-events:none}
+.window.maximized{width:calc(100vw - 16px)!important;height:calc(100vh - 90px)!important;top:44px!important;left:8px!important}
+.titlebar{height:34px;display:flex;align-items:center;justify-content:space-between;flex-direction:row-reverse;padding:0 8px 0 10px;cursor:grab;user-select:none;border-bottom:1px solid var(--line)}
+.titlebar:active{cursor:grabbing}
+.titlebar span{font-size:13px;font-weight:500}
+.window-controls{display:flex;gap:2px}
+.control{min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer}
+.control:hover{color:var(--text);background:var(--line)}
+.close::before{content:"×"}
+.minimize::before{content:"–"}
+.maximize::before{content:"+"}
+.window-content{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:14px;overflow:auto}
+.compact-window{width:420px;height:560px}
+.utility-window{width:480px;height:480px;left:200px;top:64px}
+#explorer{width:860px;height:580px;left:150px;top:52px}
+#jokes{left:280px;top:84px}
+#calendar{width:720px;height:580px;left:170px;top:56px}
+
+.card h2{font-size:16px;margin-bottom:8px}
+.card p{margin-bottom:2px;font-size:13px}
+.terminal,.notes textarea,#calcDisplay,.file-editor textarea{background:var(--bg)}
+.terminal{flex:1;padding:10px;border:1px solid var(--line);overflow:auto;font:12px/1.4 ui-monospace,Menlo,monospace}
+.terminal input{margin-top:8px}
+.notes textarea{height:100%}
+
+.toolbar,.explorer-sidebar,.file-editor,.file-list,#fileList,.task-list,.quote-card,.joke-card,.calendar-note-panel{display:flex;flex-direction:column}
+.toolbar{gap:8px}
+.toolbar-actions,.utility-actions,.swatches,.editor-actions{display:flex;flex-wrap:wrap;gap:6px}
+.toolbar-actions .primary{flex:1;white-space:nowrap}
+.window-content.explorer{flex-direction:row;gap:0;padding:0;overflow:hidden}
+.explorer-sidebar{width:240px;min-width:200px;min-height:0;gap:10px;padding:12px;border-right:1px solid var(--line);background:var(--bg)}
+.file-list,#fileList{flex:1;min-height:0;gap:2px;overflow:auto}
+.file-card{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer}
+.file-icon{min-width:36px;font-size:12px;color:var(--muted);text-transform:uppercase}
+.file-card p{margin:0;font-size:13px;color:var(--text)}
+.file-empty{padding:10px;font-size:12px;color:var(--muted)}
+.file-editor{flex:1;min-width:0;min-height:0;gap:10px;padding:12px}
+.file-editor textarea{flex:1;min-height:0;height:auto;font:13px/1.45 ui-monospace,Menlo,monospace}
+.editor-header,.task-item,.settings-row,.calendar-toolbar,.calendar-note-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.editor-header strong{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.editor-actions{justify-content:flex-end}
+.editor-header button,.task-item button,.utility-actions button,.calendar-toolbar button{padding:5px 10px;border:1px solid var(--line);background:var(--bg);color:var(--text);cursor:pointer}
+
+#calcDisplay{height:44px;font:500 24px ui-monospace,Menlo,monospace;text-align:right;border:1px solid var(--line)}
+.calc-grid,.metrics-grid,.calendar-grid{display:grid;gap:4px}
+.calc-grid{grid-template-columns:repeat(4,1fr)}
+.calc-grid button{height:44px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:15px;cursor:pointer}
+.calc-grid .wide{grid-column:span 2}
+.metrics-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+.metric-card{padding:10px;border:1px solid var(--line)}
+.metric-card span,.utility-label,.utility-status,.calendar-weekday{display:block;font-size:12px;color:var(--muted)}
+.metric-card strong{display:block;margin-top:4px;font-size:20px}
+.task-list{gap:4px}
+.task-item,.settings-row{padding:8px 0;border-bottom:1px solid var(--line)}
+.settings{gap:0}
+.settings-row{padding:12px 0}
+.settings-row:last-child{border-bottom:0}
+.settings-row p{font-size:12px}
+.swatches button{width:18px;height:18px;border:1px solid var(--line);cursor:pointer}
+
+.quote-app,.joke-app{justify-content:space-between}
+.quote-card,.joke-card{flex:1;justify-content:center;gap:12px}
+.quote-card p,.joke-card #jokeSetup{font-size:18px;line-height:1.4;color:var(--text)}
+.quote-card strong{font-size:13px;font-weight:400;color:var(--muted)}
+.joke-punchline{min-height:1.4em;font-size:15px;color:var(--muted)}
+.joke-punchline.revealed{color:var(--text)}
+
+.calendar-app{gap:10px}
+.calendar-toolbar{gap:6px}
+.calendar-toolbar strong{flex:1;text-align:center;font-size:14px}
+.calendar-toolbar button{min-width:32px;height:28px;padding:0 8px}
+.calendar-grid{grid-template-columns:repeat(7,1fr);gap:2px}
+.calendar-weekday{padding:4px;font-size:11px}
+.calendar-day{position:relative;min-height:34px;padding:4px 6px;border:0;background:0;color:var(--text);text-align:left;cursor:pointer}
+.calendar-day.empty{visibility:hidden;pointer-events:none}
+.calendar-day.today{outline:1px solid var(--text)}
+.calendar-day.has-note::after{content:"";position:absolute;bottom:4px;left:6px;width:3px;height:3px;background:var(--text)}
+.calendar-note-panel{gap:8px;padding-top:8px;border-top:1px solid var(--line)}
+.calendar-note-header{flex-wrap:wrap}
+#calendarNoteInput{min-height:56px;resize:vertical}
+
+@keyframes windowOpen{from{opacity:0}to{opacity:1}}
+@keyframes windowClose{from{opacity:1}to{opacity:0}}
+
+@media(max-width:900px){.window{width:92vw;height:75vh;left:4vw;top:56px}}
 @media(max-width:700px){
-
-.desktop{
-
-width:110px;
-
-}
-
-.toolbar,
-.settings-row,
-.task-item{
-
-flex-direction:column;
-align-items:stretch;
-
-}
-
-.window-content.explorer{
-
-flex-direction:column;
-
-}
-
-.explorer-sidebar{
-
-width:100%;
-min-width:0;
-max-height:40%;
-border-right:none;
-border-bottom:1px solid var(--line);
-
-}
-
-#explorer{
-
-width:92vw;
-height:78vh;
-left:4vw;
-
-}
-
-.metrics-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.dock{
-
-overflow:auto;
-
-}
-
+.desktop{width:110px}
+.toolbar,.settings-row,.task-item{flex-direction:column;align-items:stretch}
+.window-content.explorer{flex-direction:column}
+.explorer-sidebar{width:100%;min-width:0;max-height:40%;border-right:0;border-bottom:1px solid var(--line)}
+#explorer{width:92vw;height:78vh;left:4vw}
+.metrics-grid{grid-template-columns:1fr}
+.dock{overflow:auto}
 }
