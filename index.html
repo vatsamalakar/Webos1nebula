@@ -9,8 +9,6 @@
 <title>NebulaOS X</title>
 
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/windows.css">
-<link rel="stylesheet" href="css/animations.css">
 
 </head>
 
@@ -68,7 +66,7 @@
 
 
         <span>
-            📁 File Explorer
+            File Explorer
         </span>
 
 
@@ -80,31 +78,26 @@
 
     <div class="window-content explorer">
 
+        <div class="explorer-sidebar">
 
-        <div class="toolbar">
+            <div class="toolbar">
 
-            <input 
-            id="fileSearch"
-            placeholder="Search files..."
-            oninput="searchFiles(this.value)"
-            >
+                <input
+                id="fileSearch"
+                placeholder="Search…"
+                oninput="searchFiles(this.value)"
+                >
 
+                <div class="toolbar-actions">
+                    <button class="primary" onclick="createFile()">New File</button>
+                    <button class="primary secondary" onclick="createFolder()">New Folder</button>
+                </div>
 
-            <button class="primary" onclick="createFile()">
-                New File
-            </button>
+            </div>
 
-
-            <button class="primary secondary" onclick="createFolder()">
-                New Folder
-            </button>
-
+            <div id="fileList" class="file-list"></div>
 
         </div>
-
-
-        <div id="fileList"></div>
-
 
         <div class="file-editor" id="fileEditor">
 
@@ -114,26 +107,28 @@
                     No file selected
                 </strong>
 
-                <button onclick="deleteSelectedFile()">
+                <button type="button" onclick="deleteSelectedFile()">
                     Delete
                 </button>
 
             </div>
 
-            <textarea 
+            <textarea
             id="fileContent"
-            placeholder="Select or create a file to edit it."
-            disabled>
-            </textarea>
+            placeholder="Select a file to edit it."
+            disabled></textarea>
 
-            <button 
-            class="primary"
-            onclick="saveSelectedFile()">
-                Save File
-            </button>
+            <div class="editor-actions">
+                <button
+                class="primary"
+                id="saveFileBtn"
+                onclick="saveSelectedFile()"
+                disabled>
+                    Save File
+                </button>
+            </div>
 
         </div>
-
 
     </div>
 
@@ -165,7 +160,7 @@
 
 
         <span>
-            🧮 Calculator
+            Calculator
         </span>
 
 
@@ -232,7 +227,7 @@
         </div>
 
         <span>
-            📊 Task Manager
+            Task Manager
         </span>
 
     </div>
@@ -289,7 +284,7 @@
         </div>
 
         <span>
-            ⚙️ Settings
+            Settings
         </span>
 
     </div>
@@ -354,7 +349,7 @@
         </div>
 
         <span>
-            ✨ Quote of the Day
+            Quote of the Day
         </span>
 
     </div>
@@ -403,7 +398,7 @@
         </div>
 
         <span>
-            😂 Joke Generator
+            Joke Generator
         </span>
 
     </div>
@@ -453,7 +448,7 @@
         </div>
 
         <span>
-            📅 Calendar
+            Calendar
         </span>
 
     </div>
@@ -549,7 +544,7 @@
 
 
         <span>
-            📝 Notes
+            Notes
         </span>
 
 
@@ -624,7 +619,7 @@
 
 
         <span>
-            💻 Terminal
+            Terminal
         </span>
 
 
@@ -702,7 +697,7 @@
 
 
         <span>
-            ℹ️ System
+            System
         </span>
 
 
@@ -775,18 +770,15 @@
         id="dockPinnedSystem"
         onclick="openApp('system')"
         aria-label="System">
-            ℹ️
+            System
         </button>
 
         <button
         type="button"
         id="dockPinnedSettings"
-        class="dock-settings"
         onclick="openApp('settings')"
         aria-label="Settings">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
-            <path fill="currentColor" d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.13.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.69.22l2.39-.96c.5.41 1.05.72 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.58-.22 1.13-.53 1.63-.94l2.39.96c.26.1.55 0 .69-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
-            </svg>
+            Settings
         </button>
 
     </div>
